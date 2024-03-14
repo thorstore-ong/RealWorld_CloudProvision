@@ -11,10 +11,11 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_HOST: ${DB_HOST}
     ports:
       - "3306:3306"
     healthcheck:
-      test: ["CMD", "mysql", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASSWORD}", "-e", "SELECT 1"]
+      test: ["CMD", "mysql", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}", "-e", "SELECT 1"]
       timeout: 20s
       retries: 10
   
@@ -32,8 +33,8 @@ services:
     env_file:
       - .env
     depends_on:
-      - db: "rds.ap-southeast-3.myhuaweicloud.com"
-        condition: service_healthy
+     - db:
+       condition: service_healthy
           
 volumes:
   data:

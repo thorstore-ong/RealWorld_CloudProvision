@@ -89,7 +89,7 @@ DATABASES = {
         "NAME": config('MYSQL_DATABASE'),
         'USER': config('MYSQL_USER'),
         'PASSWORD': config('MYSQL_PASSWORD'),
-        'HOST': config('DB_HOST'),
+        'HOST': config('DB_HOST', 'db'),
         'PORT': config('DB_PORT', '3306'),
     
     }
