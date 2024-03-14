@@ -83,7 +83,12 @@ WSGI_APPLICATION = "realworld.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": "realworld_db",
+        'USER': "root",
+        'PASSWORD': "vikel@100",
+        'HOST': "rds.ap-southeast-3.myhuaweicloud.com",
+        'PORT': "3306",
+    
     }
 }
 
