@@ -12,3 +12,5 @@ COPY . /app/
 
 RUN apt-get update && apt-get install -y default-libmysqlclient-dev && \
     pip install mysqlclient
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
