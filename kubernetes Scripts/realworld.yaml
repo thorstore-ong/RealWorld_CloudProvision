@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: realworld-deployment
+  labels:
+    app: realworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: realworld
+  template:
+    metadata:
+      labels:
+        app: realworld
+    spec:
+      containers:
+      - name: realworld
+        image: demo:v1.0.0
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DB_HOST
+          value: "10.0.2.205" 
+        - name: DB_PORT
+          value: "3306"  
+        - name: DB_NAME
+          value: "realworld_db" 
+        - name: DB_USER
+          valueFrom: 
+           secretKeyRef:
+            name: mysql-secret
+            key: mysql-user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-password 
+---              
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: realworld-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: realworld
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 30100
