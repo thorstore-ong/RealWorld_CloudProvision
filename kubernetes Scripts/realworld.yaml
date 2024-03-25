@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: realworld
-        image: demo:v1.1
+        image: swr.ap-southeast-3.myhuaweicloud.com/cloud-realworld-dev/demo:v1.1
         ports:
         - containerPort: 3000
         env:
@@ -56,11 +56,3 @@ spec:
       targetPort: 3000
       nodePort: 30100
 
----
-
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: mysql-config
-data:
-  mysql-url: "10.0.2.205:3306"
