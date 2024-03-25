@@ -42,6 +42,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: realworld-service
+  annotations:
+    service.kubernetes.io/elb-class: "performance"
+    service.kubernetes.io/elb.id: 805cb09d-0898-4c9f-8587-2eafd3063708
+    name: django
 spec:
   type: LoadBalancer
   selector:
@@ -50,4 +54,3 @@ spec:
     - protocol: TCP
       port: 3000
       targetPort: 3000
-      nodePort: 30100
