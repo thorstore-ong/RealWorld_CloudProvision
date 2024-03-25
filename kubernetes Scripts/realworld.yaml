@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: realworld
-        image: demo:v1.0.0
+        image: demo:v1.1
         ports:
         - containerPort: 3000
         env:
