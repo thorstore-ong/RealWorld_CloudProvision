@@ -18,7 +18,7 @@ spec:
       - name: realworld
         image: swr.ap-southeast-3.myhuaweicloud.com/cloud-realworld-dev/demo:v1.1
         ports:
-        - containerPort: 3000
+        - containerPort: 8000
         env:
         - name: DB_HOST
           value: "10.0.2.205"
@@ -48,8 +48,8 @@ spec:
     app: realworld
   ports:
     - protocol: TCP
-      port: 3000
-      targetPort: 3000
+      port: 8000
+      targetPort: 8000
       nodePort: 30100
 
 ---
@@ -62,7 +62,7 @@ metadata:
     kubernetes.io/elb.id: '805cb09d-0898-4c9f-8587-2eafd3063708'
     kubernetes.io/elb.ip: '10.0.1.101'
     kubernetes.io/elb.class: performance  
-    kubernetes.io/elb.port: '3000'
+    kubernetes.io/elb.port: '8000'
 spec:
   rules: 
   - host: ''
@@ -73,7 +73,7 @@ spec:
           service:
             name: realworld-service  
             port: 
-              number: 3000  
+              number: 8000  
         property:
           ingress.beta.kubernetes.io/url-match-mode: STARTS_WITH
         pathType: ImplementationSpecific
