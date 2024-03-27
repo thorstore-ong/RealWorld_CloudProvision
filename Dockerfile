@@ -15,7 +15,9 @@ RUN apt-get update \
 
 COPY . /app/
 
-CMD ["python", "manage.py", "migrate", "--noinput"]
+RUN python manage.py migrate --noinput
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 
 
