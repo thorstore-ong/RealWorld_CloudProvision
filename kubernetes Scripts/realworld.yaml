@@ -21,7 +21,7 @@ spec:
         - containerPort: 3000
         env:
         - name: DB_HOST
-          value: "10.0.2.205" 
+          value: "rds.ap-southeast-3.myhuaweicloud.com"
         - name: DB_PORT
           value: "3306"  
         - name: DB_NAME
